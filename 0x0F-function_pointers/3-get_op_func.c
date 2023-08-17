@@ -1,67 +1,29 @@
 #include "3-calc.h"
-#include <stdlib.h>
 /**
- *op_add - add a & b.
- *@a: integer value.
- *@b: integer value.
+ *get_op_func - pointer to function.
+ *@s: operator passed as argument.
  *
- *Return: sum of a & b.
+ *Return: NULL if not matches.
  */
-int op_add(int a, int b)
+int (*get_op_func(char *s))(int, int)
 {
-return (a + b);
+op_t ops[] = {
+		{"+", op_add},
+		{"-", op_sub},
+		{"*", op_mul},
+		{"/", op_div},
+		{"%", op_mod},
+		{NULL, NULL}
 }
-/**
- *op_sub - subtraction a & b.
- *@a: integer value.
- *@b: integer value.
- *
- *Return: subtraction result of a & b.
- */
-int op_sub(int a, int b)
+;
+int i;
+
+i = 0;
+while (i < 5)
 {
-return (a - b);
+if (strcmp(s, ops[i].op) == 0)
+return (ops[i].f);
+i++;
 }
-/**
- *op_mul - multiplication a & b.
- *@a: integer value.
- *@b: integer value.
- *
- *Return: multiplication result of a & b.
- */
-int op_mul(int a, int b)
-{
-return (a * b);
-}
-/**
- *op_div - division a & b.
- *@a: integer value.
- *@b: integer value.
- *
- *Return: divided result of a & b.
- */
-int op_div(int a, int b)
-{
-if (!b)
-{
-printf("Error\n");
-exit(100);
-}
-return (a / b);
-}
-/**
- *op_mod -modulo of a & b.
- *@a: integer value.
- *@b: integer value.
- *
- *Return: mod result of a & b.
- */
-int op_mod(int a, int b)
-{
-if (!b)
-{
-printf("Error\n");
-exit(100);
-}
-return (a % b);
-}
+return (NULL);
+}}
