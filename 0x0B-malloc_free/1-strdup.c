@@ -1,22 +1,30 @@
-#include "main.h"
-#include <stdio.h>
+#include "holberton.h"
 #include <stdlib.h>
-/**
- * free_grid - use free function on previous grid
- * @grid: 2 dim. array to free
- * @height: input height (size)
- * Return: free'd grid
- */
-void free_grid(int **grid, int height)
-{
-	int i;
+#include <stdio.h>
 
-	if (grid != NULL || height != 0)
+/**
+ * _strdup - allocates space in memory
+ * @str: input string
+ *
+ * Return: returns a pointer to a newly
+ * allocated space in memory
+ */
+
+char *_strdup(char *str)
+{
+	char *duplicate_num;
+	int i = 0, len = 0;
+
+	duplicate_num = malloc(sizeof(char) * (len + 1));
+	if (str == 0 || duplicate_num == NULL)
 	{
-		for (i = 0; i < height; i++)
-		{
-			free(grid[i]);
-		}
-		free(grid);
+		return (NULL);
 	}
-}
+	for (i = 0; str[i]; i++)
+	{
+		duplicate_num[i] = str[i];
+		len++;
+	}
+	duplicate_num[len] = '\0';
+	return (duplicate_num);
+}}
